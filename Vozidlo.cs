@@ -38,21 +38,28 @@ namespace Lekce10RegistrVozidel
         {
             get { return _technicky_stav;}
         }
-        public virtual void VypisVozidlo()
+        public virtual string VypisVozidlo()
         {
-            Console.WriteLine(this.GetType().Name);
-            Console.WriteLine("Rok výroby: " + rokVyroby);
-            Console.WriteLine("Značka vozidla: " + znackaVozidla);
-            Console.WriteLine("Technický stav je ");
+            string stav;
             switch (_technicky_stav)
             {
-                case 1: Console.WriteLine("dobrý.");
-                break; 
-                case 2: Console.WriteLine("špatný.");
-                break; 
-                case 3: Console.WriteLine("určený k opravě.");
-                break;
+                case 1:
+                    stav="dobrý.";
+                    break;
+                case 2:
+                    stav = "špatný.";
+                    break;
+                case 3:
+                    stav = "určený k opravě.";
+                    break;
+
+                default: 
+                    stav = "není znám.";
+                    break;
             }
+            return  $"barva: {barva} " +
+                    $"\nStáří vozidla: {StariVozidla} roků, najeté kilometry: {StavTachometru}" +
+                    $"\nTechnický stav vozidla je {stav}.";
         }
         public void JizdaVozidlem(int delka) {
             if (_technicky_stav < 3)
@@ -61,6 +68,10 @@ namespace Lekce10RegistrVozidel
             _technicky_stav++;
             }
             else Console.WriteLine("Vybraný vůz je třeba opravit.");
+        }
+        public void OpravVozidlo()
+        {
+            _technicky_stav = 1;
         }
     }
 }

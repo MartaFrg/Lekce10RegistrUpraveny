@@ -18,10 +18,9 @@ internal class Automobil : Vozidlo
         this.model = model;
         pocetKol=4; 
     }
-        public override void VypisVozidlo()
-        {
-            base.VypisVozidlo();
-        }
+        public override string VypisVozidlo() {
+        return $"{GetType().Name} {znackaVozidla} {model}, má {pocetKol} kola, {base.VypisVozidlo()}";
     }
+}
 
 

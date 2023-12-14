@@ -12,10 +12,6 @@ namespace Lekce10RegistrVozidel
         public int PocetVozidel { 
             get {return seznamVozidel.Count;}
         }
-        public Vozidlo PodejVozidlo(int poradi)
-        {
-            return seznamVozidel[poradi];
-        }
         public void PridejAuto()
         {
             seznamVozidel.Add(new Automobil(ZnackaVozidla(), ModelAuta(), RokVyroby(), Barva(), PocetDveri(), StavTachometru()));
@@ -32,9 +28,19 @@ namespace Lekce10RegistrVozidel
         {
             this.seznamVozidel.Add(new Motocykl(znackaVozidla, typMotocyklu, rokVyroby, barva, stavTachometru));
         }
-        public void VymazVozidlo(int poradi)
+        public void VymazVozidlo(Vozidlo v)
         {
-            seznamVozidel.RemoveAt(poradi);
+            seznamVozidel.Remove(v);
+        }
+        public Vozidlo VyberVozidlo()
+        {
+            int cisloVozu=0;
+            while (cisloVozu == 0)
+            {
+                while (!int.TryParse(Console.ReadLine(), out cisloVozu) || cisloVozu < 0 || cisloVozu > seznamVozidel.Count) Console.WriteLine($"Zadej možnost 1-{seznamVozidel.Count}: ");
+                if (cisloVozu == 0) { VypisVsechVozidel(); Console.Write("Zadej číslo vozidla: "); };
+            }
+            return seznamVozidel[cisloVozu-1];
         }
         int RokVyroby()
         {
@@ -77,20 +83,17 @@ namespace Lekce10RegistrVozidel
             Console.Write("Zadej název modelu automobilu: ");
             return Console.ReadLine();
         }
-        public void VypisVozidla()
+        public void VypisVsechVozidel()
         {
             int poradi=1;        
             foreach (var v in seznamVozidel)
             {
-                Console.Write($"{poradi}. {v.GetType().Name} {v.znackaVozidla} ");
-                if (v is Automobil automobil) Console.Write(automobil.model);
-                if (v is Motocykl motocykl) Console.Write(motocykl.typMotocyklu);
-                Console.WriteLine($", barva: {v.barva} ");
-                Console.WriteLine($"Rok výroby: {v.rokVyroby}, najeté kilometry: {v.StavTachometru}");
-                Console.WriteLine($"Technický stav vozidla je {v.TechnickyStav}.");
+                Console.Write(poradi+". ");
+                Console.WriteLine(  v.VypisVozidlo());
                 Console.WriteLine("");
                 poradi++;
             }
+            if (seznamVozidel.Count == 0) {Console.WriteLine("Není uloženo žádné vozidlo.\n"); }
         }
 
 
