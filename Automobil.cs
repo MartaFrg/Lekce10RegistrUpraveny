@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 internal class Automobil : Vozidlo
 {
     private readonly int pocetKol;
-    public int pocetDveri;
-    public string model;
+    private readonly int pocetDveri;
+    private readonly string model;
 
 
     public Automobil(string znackaVozidla, string model, int rokVyroby, string barva, int pocetDveri, int stavTachometru) 
@@ -19,7 +19,7 @@ internal class Automobil : Vozidlo
         pocetKol=4; 
     }
         public override string VypisVozidlo() {
-        return $"{GetType().Name} {znackaVozidla} {model}, má {pocetKol} kola, {base.VypisVozidlo()}";
+        return $"{GetType().Name} {znackaVozidla} {model}, má {pocetKol} kola, je {pocetDveri}-dvéřové, {base.VypisVozidlo()}";
     }
 }
 

@@ -10,8 +10,8 @@ namespace Lekce10RegistrVozidel
 {
     public abstract class Vozidlo
     {
-        public readonly int rokVyroby;
-        public string barva;
+        private readonly int rokVyroby;
+        private string barva;
         public readonly string znackaVozidla;
         //public readonly int pocetKol;
         private int _stavTachometru;

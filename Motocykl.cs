@@ -11,7 +11,7 @@ namespace Lekce10RegistrVozidel
     internal class Motocykl : Vozidlo
     {
         private const int pocetKol=2;
-        public readonly string typMotocyklu;
+        private readonly string typMotocyklu;
         public Motocykl(string znackaVozidla, string typMotocyklu, int rokVyroby, string barva, int stavTachometru) 
             : base(znackaVozidla, rokVyroby, barva, stavTachometru)
         {
