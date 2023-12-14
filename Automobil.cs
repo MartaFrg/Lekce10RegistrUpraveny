@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 internal class Automobil : Vozidlo
 {
-    private readonly int pocetKol;
+    private const int pocetKol=4;
     private readonly int pocetDveri;
     private readonly string model;
 
@@ -16,7 +16,6 @@ internal class Automobil : Vozidlo
     {
         this.pocetDveri = pocetDveri;
         this.model = model;
-        pocetKol=4; 
     }
         public override string VypisVozidlo() {
         return $"{GetType().Name} {znackaVozidla} {model}, má {pocetKol} kola, je {pocetDveri}-dvéřové, {base.VypisVozidlo()}";

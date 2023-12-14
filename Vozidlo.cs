@@ -13,7 +13,6 @@ namespace Lekce10RegistrVozidel
         private readonly int rokVyroby;
         private string barva;
         public readonly string znackaVozidla;
-        //public readonly int pocetKol;
         private int _stavTachometru;
         private int _technicky_stav = 1;
         public Vozidlo(string znackaVozidla, int rokVyroby, string barva, int stavTachometru)
