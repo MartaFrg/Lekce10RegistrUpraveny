@@ -58,7 +58,7 @@ namespace Lekce10RegistrVozidel
             if (_technicky_stav < 3)
             {
             _stavTachometru += delka;
-                _technicky_stav++;
+            _technicky_stav++;
             }
             else Console.WriteLine("Vybraný vůz je třeba opravit.");
         }

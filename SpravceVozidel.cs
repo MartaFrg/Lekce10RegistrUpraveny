@@ -8,7 +8,14 @@ namespace Lekce10RegistrVozidel
 {
     public class SpravceVozidel
     {
-        public List<Vozidlo> seznamVozidel = new List<Vozidlo>();
+        private List<Vozidlo> seznamVozidel = new List<Vozidlo>();
+        public int PocetVozidel { 
+            get {return seznamVozidel.Count;}
+        }
+        public Vozidlo PodejVozidlo(int poradi)
+        {
+            return seznamVozidel[poradi];
+        }
         public void PridejAuto()
         {
             seznamVozidel.Add(new Automobil(ZnackaVozidla(), ModelAuta(), RokVyroby(), Barva(), PocetDveri(), StavTachometru()));
@@ -24,6 +31,10 @@ namespace Lekce10RegistrVozidel
         public void PridejMoto(string znackaVozidla, string typMotocyklu, int rokVyroby, string barva, int stavTachometru)
         {
             this.seznamVozidel.Add(new Motocykl(znackaVozidla, typMotocyklu, rokVyroby, barva, stavTachometru));
+        }
+        public void VymazVozidlo(int poradi)
+        {
+            seznamVozidel.RemoveAt(poradi);
         }
         int RokVyroby()
         {
@@ -76,6 +87,7 @@ namespace Lekce10RegistrVozidel
                 if (v is Motocykl motocykl) Console.Write(motocykl.typMotocyklu);
                 Console.WriteLine($", barva: {v.barva} ");
                 Console.WriteLine($"Rok výroby: {v.rokVyroby}, najeté kilometry: {v.StavTachometru}");
+                Console.WriteLine($"Technický stav vozidla je {v.TechnickyStav}.");
                 Console.WriteLine("");
                 poradi++;
             }

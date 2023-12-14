@@ -15,7 +15,7 @@ namespace Lekce10RegistrVozidel
             vozovyPark1.PridejAuto("Škoda", "Octavia", 1990, "modrá", 5, 1800);
             vozovyPark1.PridejMoto("Jawa", "250", 1982, "bílá", 50000);
 
-            while (volba != 4)
+            while (volba != 6)
             {
                 Console.WriteLine("Vyber z možností:" +
                     "\t1. přidej automobil\n" +
@@ -29,19 +29,28 @@ namespace Lekce10RegistrVozidel
                 {
                     case 1:
                         vozovyPark1.PridejAuto();
+                        Console.WriteLine("");
+                        Console.WriteLine("Přidán automobil.");
                         break;
                     case 2:
                         Console.WriteLine();
                         vozovyPark1.PridejMoto();
+                        Console.WriteLine("");
+                        Console.WriteLine("Přidán motocykl.");
                         break;
                     case 3:
                         vozovyPark1.VypisVozidla();
                         break;
                     case 4:
-                        Console.WriteLine();
+                        Console.WriteLine($"Zadej číslo vozidla, se kterým chceš jet (1-{vozovyPark1.PocetVozidel}), nebo zadej nulu pro výpis vozidel.");
+                        //ZjistitVozidlo().JizdaVozidlem(200);
                         break;
                     case 5:
-                        //vozovyPark1.SmazVozidlo();
+                        int cisloVozu;
+                        Console.WriteLine($"Zadej číslo vozidla, které chceš vymazat (1-{vozovyPark1.PocetVozidel}), nebo zadej nulu pro výpis vozidel.");
+                        while (!int.TryParse(Console.ReadLine(), out cisloVozu) || cisloVozu < 0 || cisloVozu > vozovyPark1.PocetVozidel) Console.WriteLine("Zadej možnost 1-6: ");
+                        //if (cisloVozu == 0)
+                        vozovyPark1.VymazVozidlo(0);
                         break;
                     case 6:
                         Console.WriteLine();
@@ -50,9 +59,7 @@ namespace Lekce10RegistrVozidel
                 }
                 if (volba == 1 || volba == 2)
                 {
-                    Console.WriteLine("");
-                    Console.WriteLine("pridano vozidlo " + vozovyPark1.seznamVozidel.Last().GetType().Name);
-                    Console.WriteLine("celkem vozidel " + vozovyPark1.seznamVozidel.Count);
+                    Console.WriteLine("celkem vozidel " + vozovyPark1.PocetVozidel);
                     Console.WriteLine("");
                 }
             }

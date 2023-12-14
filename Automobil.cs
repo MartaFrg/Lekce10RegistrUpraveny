@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 internal class Automobil : Vozidlo
 {
-    public readonly int pocetKol;
+    private readonly int pocetKol;
     public int pocetDveri;
     public string model;
 

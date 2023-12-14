@@ -9,7 +9,7 @@ namespace Lekce10RegistrVozidel
 {
     internal class Motocykl : Vozidlo
     {
-        readonly int pocetKol;
+        private readonly int pocetKol;
         public string typMotocyklu;
         public Motocykl(string znackaVozidla, string typMotocyklu, int rokVyroby, string barva, int stavTachometru) 
             : base(znackaVozidla, rokVyroby, barva, stavTachometru)
